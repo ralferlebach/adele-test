@@ -1,0 +1,40 @@
+{
+  "steps": [
+    [
+      "plugins"
+    ],
+    [
+      "courses",
+      "adeleLearningpaths"
+    ]
+  ],
+  "plugins": {
+    "needed":
+    [
+      "https://github.com/Wunderbyte-GmbH/moodle-mod_adele/archive/refs/heads/master.zip",
+      "https://github.com/Wunderbyte-GmbH/moodle_local_adele/archive/refs/heads/main.zip"
+    ],
+    "subplugins": {}
+  },
+  "courses": {
+    "path": "courses"
+  },
+  "adeleLearningpaths": {
+    "path": "learningpaths",
+    "checks": {
+      "check_table_exists": "table",
+      "check_courses_exists": {
+        "json->tree->nodes": {
+          "data->course_node_id": {
+            "nested": false
+          }
+        }
+      },
+      "check_component_exists": {
+        "json->tree->nodes": {
+          "completion->nodes": "data->value"
+        }
+      }
+    }
+  }
+}
